@@ -8,8 +8,15 @@ import { MyTableComponent } from "./table.component";
 
 @NgModule({
 
-    imports: [BrowserModule, FormsModule, ModelModule, RouterModule],
+    imports: 
+    [
+        BrowserModule, 
+        FormsModule,
+        ModelModule, 
+        RouterModule
+    ],
     declarations:[MyFormComponent, MyTableComponent],
+    providers:[],
     exports:[ModelModule, MyTableComponent, MyFormComponent]
 
 })
