@@ -1,0 +1,34 @@
+<div class="bg-primary text-white p-2" [class.bg-warning]="isEdit">
+    
+    <h5>{{isEdit ? "Edit" : "Create"}} Courses</h5>
+
+</div>
+
+
+<form novalidate #form="ngForm" (ngSubmit)="submitForm(form)" (reset)="resetForm()">
+
+    <div class="form-control">
+        <label>Title</label>
+        <input class="form-control" name="title" [(ngModel)]="course.title" required>
+    </div>
+    <div class="form-control">
+        <label>SeatCapacity</label>
+        <input class="form-control" name="seatCapacity"  [(ngModel)]="course.seatCapacity"
+        required pattern="^[0-9\.]+$" required>
+    </div>
+
+    <div class="form-control">
+        <label>InstructorName</label>
+        <input class="form-control" name="instructorName"  [(ngModel)]="course.instructorName" required>
+    </div>
+
+    <button type="submit" [class.btn-warning]="isEdit" [disabled]="form.invalid">
+        {{isEdit ? "Save" : "Create"}}
+    </button>
+
+    
+  <!--Este routerlink redirecciona a la raiz-->
+  <button type="reset" class="btn btn-secondary m-1" routerLink="/">Cancel</button>
+
+</form>
+
