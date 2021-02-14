@@ -1,0 +1,25 @@
+
+    <table class="table table-sm table-bordered table-striped">
+
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Seat Capacity</th>
+                <th>Instructor Name</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr *ngFor="let item of getCourses()">
+                
+                <td>{{item.id}}</td>
+                <td>{{item.title}}</td>
+                <td>{{item.seatCapacity}}</td>
+                <td>{{item.instructorName}}</td>
+                
+            </tr>
+        </tbody>
+
+    </table>
