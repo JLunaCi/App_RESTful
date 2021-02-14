@@ -76,4 +76,37 @@ export class Model{
     }
 
 
+    getNextProudctId(id:number):number{
+
+        //enonctramos la posición del producto
+        let index = this.courses.findIndex(p=>this.locator(p,id));
+  
+        if(index> (-1)){
+          //length= 5
+          //index = 3 => 4 producto 
+          //5 > 3 + 2 = 5 > 5 //no se cumple
+          // el condicional debe ser  ">="
+  
+          return this.courses[this.courses.length >= index + 2 ? index + 1 : 0].id;
+  
+        }else{
+          return id || 0;
+        }
+      }
+  
+      getPreviousProductId(id:number):number{
+        let index = this.courses.findIndex(p=>this.locator(p,id));
+  
+        if(index> (-1)){
+  
+          return this.courses[index> 0? index -1 : this.courses.length - 1].id;
+  
+        }else{
+          return id || 0;
+        }
+  
+      }
+
+
+
 }

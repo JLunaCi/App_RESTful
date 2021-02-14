@@ -1,4 +1,8 @@
 
+ <div class="text-center" style="margin-bottom: 20px; margin-top: 20px;">
+    <h5>My First App with Angular!</h5>
+  </div>
+
     <table class="table table-sm table-bordered table-striped">
 
         <thead>
@@ -38,6 +42,16 @@
     [routerLink]="['/form/create']">
     Create New Course
     </button>
+
+    <!--Intentamos borrar un producto que no existe, este Produce un error llamado 404-->
+    <button class="btn btn-danger" (click)="deleteCourse(-1)" style="margin: 10px;">
+    Generate Http Error
+    </button>
+
+    <button class="btn btn-danger" routerLink= "/does/not/exist" style="margin: 10px;">
+      Generate Routing Error
+    </button>
+    
 
 
 

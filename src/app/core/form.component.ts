@@ -7,7 +7,8 @@ import { Model } from "../model/repository.model";
 @Component({
 
     selector: "myForm",
-    templateUrl: "form.component.html"
+    templateUrl: "form.component.html",
+    styleUrls:["form.component.css"]
 })
 
 export class MyFormComponent{
@@ -56,6 +57,10 @@ export class MyFormComponent{
     public resetForm(){
         this.course = new Course;
     }
+
+
+
+    
 
 
 }

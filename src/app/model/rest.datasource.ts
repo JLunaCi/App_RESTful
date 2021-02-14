@@ -1,7 +1,8 @@
 import { Inject, Injectable, InjectionToken } from "@angular/core";
-import { HttpClient} from "@angular/common/http";
+import { HttpClient, HttpHeaders} from "@angular/common/http";
 import { Course } from "./course.model";
-import { Observable } from "rxjs";
+import { Observable, throwError } from "rxjs";
+import { catchError } from "rxjs/operators";
 
 
 export const REST_URL = new InjectionToken("rest_url");
@@ -23,23 +24,39 @@ export class RestDataSource{
 
     getData():Observable<Course[]>{
         
-        return this.http.get<Course[]>(this.url);
+        return this.sendRequest<Course[]>("GET",this.url);
     }
 
     saveCourse(course: Course): Observable<Course>{
 
-        return this.http.post<Course>(this.url, course);
+        return this.sendRequest<Course>("POST",this.url, course);
     }
 
     updateCourse(course : Course): Observable<Course>{
-        return this.http.put<Course>( `${this.url}/${course.id}`, course)
+        return this.sendRequest<Course>( "PUT",`${this.url}/${course.id}`, course)
     }
 
     //muy importante, los espacios entre la url y el id a eliminar, se detectan como caracteres
     //por lo que al hacer la peticio http delete , se hace mal , puesto que no sabe que objeto borrar
     deleteCourse(id: number){
-        return this.http.delete<Course>(`${this.url}/${id}`)
+        return this.sendRequest<Course>("DELETE",`${this.url}/${id}`)
     }
+
+    
+    //MÉTODO GENÉRICO PARA ENCAPCULAR TODAS LAS TIPOS DE PETICIONES HTTP
+    // EN UN SOLO MÉTODO
+    private sendRequest<T>(verb:string, url:string, objeto?:Course):Observable<T>{
+
+        let myHeaders= new HttpHeaders();
+        myHeaders = myHeaders.set("Acces-key","<secret>");
+        myHeaders = myHeaders.set("Application-Name","HomeAngular");
+  
+        return this.http.request<T>(verb, url,
+              {body:objeto,
+               headers: myHeaders
+              }).pipe(catchError((error: Response)=>throwError(`Network Error: ${error.statusText}
+              (${error.status})`)));
+      }
 
 
     

@@ -5,6 +5,22 @@
 </div>
 
 
+
+<div *ngIf="isEdit" class="p-2">
+
+    <button class="btn btn-secondary"
+    [routerLink]="['/form', 'edit', model.getPreviousProductId(course.id)]">
+    Previous
+  </button>
+  
+  <button class="btn btn-secondary"
+  [routerLink]="['/form', 'edit', model.getNextProudctId(course.id)]">
+  Next
+  </button>
+  
+  
+  </div>
+
 <form novalidate #form="ngForm" (ngSubmit)="submitForm(form)" (reset)="resetForm()">
 
     <div class="form-group">
