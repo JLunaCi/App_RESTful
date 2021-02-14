@@ -53,7 +53,7 @@ export class MyFormComponent{
 
 
     //método para resetear el valor del objeto curso
-    public resetForm(form:NgForm){
+    public resetForm(){
         this.course = new Course;
     }
 
