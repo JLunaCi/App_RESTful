@@ -32,11 +32,13 @@ export class RestDataSource{
     }
 
     updateCourse(course : Course): Observable<Course>{
-        return this.http.put<Course>( `${this.url} / ${course.id}`, course)
+        return this.http.put<Course>( `${this.url}/${course.id}`, course)
     }
 
+    //muy importante, los espacios entre la url y el id a eliminar, se detectan como caracteres
+    //por lo que al hacer la peticio http delete , se hace mal , puesto que no sabe que objeto borrar
     deleteCourse(id: number){
-        return this.http.delete<Course>(`${this.url}/ ${id}`)
+        return this.http.delete<Course>(`${this.url}/${id}`)
     }
 
 
