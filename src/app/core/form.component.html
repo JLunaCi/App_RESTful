@@ -1,28 +1,39 @@
-<div class="bg-primary text-white p-2" [class.bg-warning]="isEdit">
+<div class="bg-primary text-white p-2" [class.bg-info]="isEdit">
     
-    <h5>{{isEdit ? "Edit" : "Create"}} Courses</h5>
+    <h5>{{isEdit ? "Edit" : "Create"}} Course</h5>
 
 </div>
 
 
 <form novalidate #form="ngForm" (ngSubmit)="submitForm(form)" (reset)="resetForm()">
 
-    <div class="form-control">
+    <div class="form-group">
         <label>Title</label>
-        <input class="form-control" name="title" [(ngModel)]="course.title" required>
+        <input class="form-control"
+         name="title" 
+         [(ngModel)]="course.title" 
+         required>
     </div>
-    <div class="form-control">
+    <div class="form-group">
         <label>SeatCapacity</label>
-        <input class="form-control" name="seatCapacity"  [(ngModel)]="course.seatCapacity"
-        required pattern="^[0-9\.]+$" required>
+        <input class="form-control" 
+        name="seatCapacity"  
+        [(ngModel)]="course.seatCapacity"
+        required pattern="^[0-9\.]+$">
     </div>
 
-    <div class="form-control">
+    <div class="form-group">
         <label>InstructorName</label>
-        <input class="form-control" name="instructorName"  [(ngModel)]="course.instructorName" required>
+        <input class="form-control" 
+        name="instructorName"  
+        [(ngModel)]="course.instructorName" 
+        required>
     </div>
 
-    <button type="submit" [class.btn-warning]="isEdit" [disabled]="form.invalid">
+    <button type="submit" 
+    class="btn btn-primary m-1" 
+    [class.btn-info]="isEdit" 
+    [disabled]="form.invalid">
         {{isEdit ? "Save" : "Create"}}
     </button>
 
