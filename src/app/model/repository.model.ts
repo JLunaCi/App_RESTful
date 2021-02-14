@@ -64,11 +64,14 @@ export class Model{
         //index=> la posición del objeto a borrar
         //1=>cuantos campos queremos borrar, en este caso solo uno
         this.dataSource.deleteCourse(id).
-        subscribe(c=> {
+        subscribe(()=> {
             //encontramos la posicion del objeto
             let index = this.courses.findIndex(c=> this.locator(c, id));
             //eliminamos el objeto
-            this.courses.splice(index,1);
+            if(index > -1){
+                this.courses.splice(index,1);
+            }
+            
         })
     }
 
