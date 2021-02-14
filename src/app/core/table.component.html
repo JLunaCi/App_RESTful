@@ -20,13 +20,25 @@
                 <td style="vertical-align:middle">{{item.instructorName}}</td>   
                 <td class="text-center">
                     <button class="btn btn-danger btn-sm" (click)="deleteCourse(item.id)">Delete</button>
-                    <button class="btn btn-warning btn-sm">Edit</button>
+
+                    <button class="btn btn-info btn-sm"
+                    [routerLink]="['/form', 'edit', item.id]"
+                    >Edit</button>
                 </td>
                                 
             </tr>
 
-
-
         </tbody>
 
+    
+
     </table>
+
+    <button class="btn btn-primary m-1"
+    [routerLink]="['/form/create']">
+    Create New Course
+    </button>
+
+
+
+
