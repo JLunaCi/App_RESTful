@@ -14,12 +14,19 @@
 
             <tr *ngFor="let item of getCourses()">
                 
-                <td>{{item.id}}</td>
-                <td>{{item.title}}</td>
-                <td>{{item.seatCapacity}}</td>
-                <td>{{item.instructorName}}</td>
-                
+                <td style="vertical-align:middle">{{item.id}}</td>
+                <td style="vertical-align:middle">{{item.title}}</td>
+                <td style="vertical-align:middle">{{item.seatCapacity}}</td>
+                <td style="vertical-align:middle">{{item.instructorName}}</td>   
+                <td class="text-center">
+                    <button class="btn btn-danger btn-sm" (click)="deleteCourse(item.id)">Delete</button>
+                    <button class="btn btn-warning btn-sm">Edit</button>
+                </td>
+                                
             </tr>
+
+
+
         </tbody>
 
     </table>
