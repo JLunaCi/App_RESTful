@@ -11,10 +11,15 @@ import { Model } from "../model/repository.model";
 export class MyTableComponent{
 
     //Inyectamos el model para poder accerder a sus métodos
-    constructor(public module: Model){}
+    constructor(public model: Model){}
 
-    getCourses():Course[]{
-        return this.module.getCourses();
+    public getCourses():Course[]{
+        return this.model.getCourses();
+    }
+
+    public deleteCourse(id: number){
+
+        this.model.deleteCourse(id);
     }
 
 }
