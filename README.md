@@ -1,1 +1,1 @@
-Realizando interfaz con Angular que realiza peticiones HttP a una fake Api de Node.js
+Interfaz desarrollada con Angular que realiza peticiones http a una fake Api de Node.js
